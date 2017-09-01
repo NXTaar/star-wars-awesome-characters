@@ -1,5 +1,5 @@
 
-// import CONFIG from '../config.json'
+import CONFIG from '../../config.json'
 import ASSETS from './assets.js'
 import STYLES from './styles'
 import Store from '../redux'
@@ -14,7 +14,7 @@ let globalScope = {}
 // Lodash
 globalScope._ = _
 
-// globalScope.CONFIG = CONFIG
+globalScope.CONFIG = CONFIG
 globalScope.STYLES = STYLES
 globalScope.ASSETS = ASSETS
 

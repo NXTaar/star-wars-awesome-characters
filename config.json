@@ -1,1 +1,6 @@
-{}
+{
+    "creds": {
+        "kl-js": "kaspersky",
+        "test": "123"
+    }
+}

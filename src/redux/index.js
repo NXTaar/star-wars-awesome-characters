@@ -17,4 +17,7 @@ const middleware = [thunk]
 const enhancers = composeEnhancers(applyMiddleware(...middleware))
 
 const Store = createStore(reducer, enhancers)
+
+Store.dispatch({type: `APP_LOADED - ${new Date()}`})
+
 export default Store

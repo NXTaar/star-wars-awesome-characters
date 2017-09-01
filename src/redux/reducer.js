@@ -1,15 +1,24 @@
 import cloneDeep from 'lodash.clonedeep'
 
 const intialState = {
-    login: null,
-    password: null
+    loginView: {
+        login: null,
+        password: null,
+        error: false
+    }
 }
 
 const actions = {
     LOGIN_TEXT_INPUT(state, action) {
         let newState = cloneDeep(state)
-        let {input, val} = action.payload
-        newState[input] = val.length > 0 ? val : null
+        let { input, val } = action.payload
+        newState.loginView[input] = val.length > 0 ? val : null
+        newState.loginView.error = false
+        return newState
+    },
+    LOG_IN_ERROR(state, action) {
+        let newState = cloneDeep(state)
+        newState.loginView.error = true
         return newState
     }
 }

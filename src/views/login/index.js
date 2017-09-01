@@ -4,7 +4,7 @@ import styles from './styles'
 
 import Background from 'components/background'
 
-import { userLoginInput } from './actions'
+import { userLoginInput, signIn } from './actions'
 
 import {
     getTheme,
@@ -59,28 +59,32 @@ const ColoredRaisedButton = MKButton.coloredButton()
 class LoginView extends Component {
     static mapDispatchToProps(dispatch) {
         return {
-            inputHandler: (input) => (val) => dispatch(userLoginInput({input, val}))
+            inputHandler: (input) => (val) => dispatch(userLoginInput({input, val})),
+            btnHandler: () => dispatch(signIn)
         }
     }
     static mapStateToProps(state) {
         return {
-            login: state.login,
-            password: state.password
+            login: state.loginView.login,
+            password: state.loginView.password,
+            error: state.loginView.error
         }
     }
     render() {
-        let {inputHandler, login, password} = this.props
+        let {inputHandler, login, password, error, btnHandler} = this.props
+        let headerStyles = [styles.header, error ? STYLES.bgRed : {}]
+        let titleText = error ? "Wrong login credentials!" : "Welcome"
         return (
             <View style={[styles.view, styles.centerised]}>
                 <Image style={[styles.background]} source={ASSETS.images['login-background']}></Image>
                 <View style={[theme.cardStyle, styles.container]}>
-                    <View style={[styles.header]}>
-                        <Text style={[styles.title]}>Welcome</Text>
+                    <View style={headerStyles}>
+                        <Text style={[styles.title]}>{titleText}</Text>
                     </View>
                     <View style={[styles.content]}>
                         <LoginField value={login} onChangeText={inputHandler('login')} />
-                        <PasswordField onChangeText={inputHandler('password')} />
-                        <ColoredRaisedButton />
+                        <PasswordField value={password} onChangeText={inputHandler('password')} />
+                        <ColoredRaisedButton onPress={btnHandler}/>
                     </View>
                 </View>
             </View>
