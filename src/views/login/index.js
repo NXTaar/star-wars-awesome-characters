@@ -8,7 +8,8 @@ import {
     getTheme,
     MKTextField,
     MKColor,
-    MKButton
+    MKButton,
+    MKCardStyles
 } from 'react-native-material-kit';
 
 const theme = getTheme();
@@ -17,6 +18,7 @@ const theme = getTheme();
 
 const LoginField = MKTextField.textfieldWithFloatingLabel()
     .withPlaceholder('Login')
+    .withHighlightColor('#ad1457')
     .withStyle([styles.formInputs])
     .build()
 
@@ -24,7 +26,7 @@ const LoginField = MKTextField.textfieldWithFloatingLabel()
 const PasswordField = MKTextField.textfieldWithFloatingLabel()
     .withPassword(true)
     .withPlaceholder('Password')
-    .withHighlightColor(MKColor.Lime)
+    .withHighlightColor('#ad1457')
     .withStyle(styles.formInputs)
     // .withOnFocus(() => console.log('Focus'))
     // .withOnBlur(() => console.log('Blur'))
@@ -36,6 +38,7 @@ const PasswordField = MKTextField.textfieldWithFloatingLabel()
 
 const ColoredRaisedButton = MKButton.coloredButton()
     .withText('SIGN IN')
+    .withBackgroundColor('#ad1457')
     .withStyle([styles.signInBtn, styles.formInputs])
     .withOnPress(() => {
         console.log("Hi, it's a colored button!");
@@ -43,13 +46,23 @@ const ColoredRaisedButton = MKButton.coloredButton()
     .build();
 
 export default class LoginView extends Component {
+    inputHandler = input => (val) => {
+        console.log(input, val)
+        Store.dispatch({type: "BANG!!!"})
+    }
     render() {
         return (
             <View style={[styles.view, styles.centerised]}>
-                <View style={[theme.cardStyle, styles.formContainer, styles.centerised]}>
-                    <LoginField />
-                    <PasswordField />
-                    <ColoredRaisedButton />
+                <Image style={[styles.background]} source={ASSETS.images['login-background']}></Image>
+                <View style={[theme.cardStyle, styles.container]}>
+                    <View style={[styles.header]}>
+                        <Text style={[styles.title]}>Welcome</Text>
+                    </View>
+                    <View style={[styles.content]}>
+                        <LoginField onChangeText={this.inputHandler('login')} />
+                        <PasswordField onChangeText={this.inputHandler('password')} />
+                        <ColoredRaisedButton />
+                    </View>
                 </View>
             </View>
         );
