@@ -1,32 +1,20 @@
 import { Platform} from 'react-native'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import reducer from './reducer'
 
-import devToolsEnhancer from 'remote-redux-devtools'
+import {composeWithDevTools} from 'remote-redux-devtools'
+import thunk from 'redux-thunk'
 
-const intialState = {
-    login: null,
-    password: null
-}
-
-const actions = {
-    LOGIN_TEXT_INPUT(state, action) {
-        console.log(action);
-    }
-}
-
-const reducer = (state = intialState, action) => {
-    let actionHandler = actions[action.type]
-    return typeof actionHandler === 'function' ? actionHandler(state, action) : state
-}
-
-
-
-
-
-const Store = createStore(reducer, devToolsEnhancer({
+const composeEnhancers = composeWithDevTools({
     realtime: true,
     name: Platform.OS,
     hostname: 'localhost',
     port: 5678
-}))
+});
+
+const middleware = [thunk]
+
+const enhancers = composeEnhancers(applyMiddleware(...middleware))
+
+const Store = createStore(reducer, enhancers)
 export default Store

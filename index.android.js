@@ -7,6 +7,9 @@ const { AppRegistry, Text } = Native
 
 
 export default class StarWarsAwesomeCharacters extends Component {
+  componentDidMount() {
+    Store.dispatch({type: 'APP_LOADED'})
+  }
   render() {
     return (
       <Provider store={Store}>

@@ -4,6 +4,8 @@ import styles from './styles'
 
 import Background from 'components/background'
 
+import { userLoginInput } from './actions'
+
 import {
     getTheme,
     MKTextField,
@@ -45,12 +47,29 @@ const ColoredRaisedButton = MKButton.coloredButton()
     })
     .build();
 
-export default class LoginView extends Component {
-    inputHandler = input => (val) => {
-        console.log(input, val)
-        Store.dispatch({type: "BANG!!!"})
+
+// const mapDispatchToProps = (dispatch) => {
+//     return ({
+//         inputHandler: (input) => (val) => {
+//             console.log(input, val)
+//             dispatch(testAction)
+//         }
+//     })
+// }
+class LoginView extends Component {
+    static mapDispatchToProps(dispatch) {
+        return {
+            inputHandler: (input) => (val) => dispatch(userLoginInput({input, val}))
+        }
+    }
+    static mapStateToProps(state) {
+        return {
+            login: state.login,
+            password: state.password
+        }
     }
     render() {
+        let {inputHandler, login, password} = this.props
         return (
             <View style={[styles.view, styles.centerised]}>
                 <Image style={[styles.background]} source={ASSETS.images['login-background']}></Image>
@@ -59,8 +78,8 @@ export default class LoginView extends Component {
                         <Text style={[styles.title]}>Welcome</Text>
                     </View>
                     <View style={[styles.content]}>
-                        <LoginField onChangeText={this.inputHandler('login')} />
-                        <PasswordField onChangeText={this.inputHandler('password')} />
+                        <LoginField value={login} onChangeText={inputHandler('login')} />
+                        <PasswordField onChangeText={inputHandler('password')} />
                         <ColoredRaisedButton />
                     </View>
                 </View>
@@ -68,3 +87,5 @@ export default class LoginView extends Component {
         );
     }
 }
+
+export default connect(LoginView.mapStateToProps, LoginView.mapDispatchToProps)(LoginView)
