@@ -1,16 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import './src/globals'
-import React, { Component } from 'react';
+
+
+
 import LoginView from './src/views/login'
-import {
-  AppRegistry,
-  Text
-} from 'react-native';
+const { AppRegistry, Text } = Native
 
 
 export default class StarWarsAwesomeCharacters extends Component {
