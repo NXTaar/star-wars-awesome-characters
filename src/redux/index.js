@@ -1,3 +1,4 @@
+import CONFIG from '../../config.json'
 import { Platform} from 'react-native'
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from './reducer'
@@ -8,8 +9,8 @@ import thunk from 'redux-thunk'
 const composeEnhancers = composeWithDevTools({
     realtime: true,
     name: Platform.OS,
-    hostname: 'localhost',
-    port: 5678
+    hostname: CONFIG.reduxDevTools.hostname,
+    port: CONFIG.reduxDevTools.port
 });
 
 const middleware = [thunk]

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Text, View, Image, ImageBackground } from 'react-native';
+const { Text, View, Image, ImageBackground } = Native
 import styles from './styles'
 
 import Background from 'components/background'

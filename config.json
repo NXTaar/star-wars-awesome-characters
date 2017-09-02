@@ -2,5 +2,9 @@
     "creds": {
         "kl-js": "kaspersky",
         "test": "123"
+    },
+    "reduxDevTools": {
+        "hostname": "localhost",
+        "port": 5678
     }
 }

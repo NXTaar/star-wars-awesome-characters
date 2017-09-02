@@ -7,7 +7,7 @@ export default StyleSheet.create({
     },
     header: {
         backgroundColor: '#ad1457',
-        height: 104,
+        height: 104
         // position: 'absolute',
         // left: -1,
         // top: -1
