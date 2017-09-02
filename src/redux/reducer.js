@@ -5,6 +5,9 @@ const intialState = {
         login: null,
         password: null,
         error: false
+    },
+    applicationData: {
+        loginOk: false
     }
 }
 
@@ -19,6 +22,11 @@ const actions = {
     LOG_IN_ERROR(state, action) {
         let newState = cloneDeep(state)
         newState.loginView.error = true
+        return newState
+    },
+    LOG_IN_OK(state, action) {
+        let newState = cloneDeep(state)
+        newState.applicationData.loginOk = true
         return newState
     }
 }

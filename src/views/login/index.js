@@ -19,7 +19,7 @@ const theme = getTheme();
 
 const LoginField = MKTextField.textfieldWithFloatingLabel()
     .withPlaceholder('Login')
-    .withHighlightColor('#ad1457')
+    .withHighlightColor(COLORS.theme.primary)
     .withStyle([styles.formInputs])
     .build()
 
@@ -27,7 +27,7 @@ const LoginField = MKTextField.textfieldWithFloatingLabel()
 const PasswordField = MKTextField.textfieldWithFloatingLabel()
     .withPassword(true)
     .withPlaceholder('Password')
-    .withHighlightColor('#ad1457')
+    .withHighlightColor(COLORS.theme.primary)
     .withStyle(styles.formInputs)
     // .withOnFocus(() => console.log('Focus'))
     // .withOnBlur(() => console.log('Blur'))
@@ -39,7 +39,7 @@ const PasswordField = MKTextField.textfieldWithFloatingLabel()
 
 const ColoredRaisedButton = MKButton.coloredButton()
     .withText('SIGN IN')
-    .withBackgroundColor('#ad1457')
+    .withBackgroundColor(COLORS.theme.primary)
     .withStyle([styles.signInBtn, styles.formInputs])
     .withOnPress(() => {
         console.log("Hi, it's a colored button!");
@@ -56,23 +56,31 @@ const ColoredRaisedButton = MKButton.coloredButton()
 //     })
 // }
 class LoginView extends Component {
-    static mapDispatchToProps(dispatch) {
+    static navigationOptions = {
+        header: null
+    }
+    static mapDispatchToProps(dispatch, getState) {
         return {
-            inputHandler: (input) => (val) => dispatch(userLoginInput({input, val})),
-            btnHandler: () => dispatch(signIn)
+            inputHandler: (input) => (val) => dispatch(userLoginInput({ input, val })),
+            btnHandler: (navigate) => () => {
+                let passed = dispatch(signIn)
+                if (passed) navigate('CharList')
+            }
         }
     }
     static mapStateToProps(state) {
         return {
             login: state.loginView.login,
             password: state.loginView.password,
-            error: state.loginView.error
+            error: state.loginView.error,
+            loginOk: state.applicationData.loginOk
         }
     }
     render() {
-        let {inputHandler, login, password, error, btnHandler} = this.props
-        let headerStyles = [styles.header, error ? STYLES.bgRed : {}]
+        let { inputHandler, login, password, error, btnHandler, loginOk } = this.props
+        let headerStyles = [styles.header, error ? styles.error : {}]
         let titleText = error ? "Wrong login credentials!" : "Welcome"
+        const { navigate } = this.props.navigation
         return (
             <View style={[styles.view, styles.centerised]}>
                 <Image style={[styles.background]} source={ASSETS.images['login-background']}></Image>
@@ -83,7 +91,7 @@ class LoginView extends Component {
                     <View style={[styles.content]}>
                         <LoginField value={login} onChangeText={inputHandler('login')} />
                         <PasswordField value={password} onChangeText={inputHandler('password')} />
-                        <ColoredRaisedButton onPress={btnHandler}/>
+                        <ColoredRaisedButton onPress={btnHandler(navigate)} />
                     </View>
                 </View>
             </View>

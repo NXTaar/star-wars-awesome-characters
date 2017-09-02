@@ -6,13 +6,16 @@ export default StyleSheet.create({
         position: 'absolute'
     },
     header: {
-        backgroundColor: '#ad1457',
+        backgroundColor: COLORS.theme.darkPrimary,
         height: 104
         // position: 'absolute',
         // left: -1,
         // top: -1
         // width: "100%",
         // flex: 1
+    },
+    error: {
+        backgroundColor: COLORS.theme.accent,
     },
     title: {
         // paddingLeft: 16,
@@ -24,11 +27,11 @@ export default StyleSheet.create({
         // backgroundColor: 'transparent',
         // padding: 16,
         fontSize: 24,
-        color: '#FFFFFF',
+        color: COLORS.theme.textIcons,
         // fontWeight: 'bold',
     },
     content: {
-        padding: 20,
+        padding: 24,
         justifyContent: 'center'
     },
 

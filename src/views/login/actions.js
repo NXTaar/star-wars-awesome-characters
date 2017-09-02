@@ -24,4 +24,5 @@ export const signIn = (dispatch, getState) => {
         dispatch({
             type: "LOG_IN_ERROR"
         })
+    return passed
 }
