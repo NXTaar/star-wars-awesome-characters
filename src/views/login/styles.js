@@ -47,8 +47,8 @@ export default StyleSheet.create({
     //     alignItems: 'center',
     // },
     signInBtn: {
-        marginTop: 30,
-        marginBottom: 15
+        marginTop: 32,
+        marginBottom: 16
     },
     formInputs: {
         width: "100%"
