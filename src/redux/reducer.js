@@ -7,7 +7,8 @@ const intialState = {
         error: false
     },
     applicationData: {
-        loginOk: false
+        loginOk: false,
+        characters: null
     }
 }
 

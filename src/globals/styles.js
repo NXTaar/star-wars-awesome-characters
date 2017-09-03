@@ -7,7 +7,8 @@ export default StyleSheet.create({
         backgroundColor: '#F5FCFF',
         padding: 20
     },
-    bgRed: {
-        backgroundColor: "red",
+    spinner: {
+        width: 32,
+        height: 32
     }
 });

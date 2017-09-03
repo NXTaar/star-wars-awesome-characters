@@ -6,5 +6,11 @@
     "reduxDevTools": {
         "hostname": "localhost",
         "port": 5678
+    },
+    "characters": {
+        "obi-wan": {
+            "qoute": "That's no moon. It's a space station",
+            "color": "C5B6AE"
+        }
     }
 }

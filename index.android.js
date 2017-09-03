@@ -13,6 +13,8 @@ import { StackNavigator } from 'react-navigation';
 const AppNavigator = StackNavigator({
   Login:    {screen: LoginView},
   CharList: {screen: CharacterList}
+}, {
+  initialRouteName: 'CharList',
 })
 
 

@@ -5,13 +5,14 @@ import Background from 'components/background'
 
 import { userLoginInput, signIn } from './actions'
 
-import {
+const {
     getTheme,
     MKTextField,
     MKColor,
     MKButton,
     MKCardStyles
-} from 'react-native-material-kit';
+} = Material
+
 
 const theme = getTheme();
 

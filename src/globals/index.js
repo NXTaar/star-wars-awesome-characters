@@ -1,5 +1,6 @@
 import ReactLib from 'react';
 import Native from 'react-native'
+import * as Material from 'react-native-material-kit'
 
 import CONFIG from '../../config.json'
 import ASSETS from './assets.js'
@@ -34,5 +35,8 @@ globalScope.React = ReactLib
 globalScope.Component = ReactLib.Component
 globalScope.Native = Native
 globalScope.StyleSheet = Native.StyleSheet
+
+// Material components
+globalScope.Material = Material
 
 Object.assign(global, globalScope)
