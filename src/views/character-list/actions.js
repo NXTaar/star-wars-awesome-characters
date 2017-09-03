@@ -1,6 +1,9 @@
-import StarWarsAPI from 'swapi-node'
-
 export const loadCharactersList = async (dispatch, getState) => {
-    let obiwan = await StarWarsAPI.getPerson(10)
-    console.log(obiwan);
+    let allowedCharacters = Object.keys(CONFIG.characters)
+    let characterRequest = allowedCharacters.map(char => {
+        let reqId = CONFIG.characters[char].requestId
+        return fetch(`https://swapi.co/api/people/${reqId}`)
+    })
+    let characters = (await Promise.all(characterRequest)).map(c => c._bodyInit)
+    console.log(characters);
 }
