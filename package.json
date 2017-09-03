@@ -30,7 +30,8 @@
     "react-test-renderer": "16.0.0-alpha.12",
     "redux": "^3.7.2",
     "remote-redux-devtools": "^0.5.12",
-    "remotedev-rn-debugger": "^0.8.2"
+    "remotedev-rn-debugger": "^0.8.2",
+    "swapi-node": "^0.4.1"
   },
   "jest": {
     "preset": "react-native"

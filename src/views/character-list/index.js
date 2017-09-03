@@ -1,5 +1,7 @@
 import styles from './styles'
 
+import { loadCharactersList } from './actions'
+
 const { Text, View, FlatList } = Native
 
 const { MKSpinner, mdl, getTheme } = Material
@@ -10,8 +12,6 @@ const Spinner = MKSpinner.spinner()
     .withStyle(STYLES.spinner)
     .withStrokeColor(COLORS.theme.textIcons)
     .build()
-
-console.log(CharListItem, "TTTTTT")
 
 const List = props => {
 
@@ -27,6 +27,9 @@ class CharacterList extends Component {
     static navigationOptions = {
         title: "Choose your hero!",
         headerLeft: null
+    }
+    componentDidMount() {
+        dispatch(loadCharactersList)
     }
     //hide keyboard
     render() {
