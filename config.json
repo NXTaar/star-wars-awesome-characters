@@ -9,9 +9,18 @@
     },
     "characters": {
         "obi-wan": {
-            "qoute": "That's no moon. It's a space station",
+            "qoute": "\"That's no moon. It's a space station\"",
             "color": "#C5B6AE",
-            "requestId": 10
+            "requestId": 10,
+            "listAvatar": "obi-wan",
+            "cardAvatar": "obi-wan-card"
+        },
+        "vader": {
+            "qoute": "\"I find your lack of faith disturbing\"",
+            "color": "#E12F3A",
+            "requestId": 4,
+            "listAvatar": "vader",
+            "cardAvatar": "vader-card"
         }
     }
 }

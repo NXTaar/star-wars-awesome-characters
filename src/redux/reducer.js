@@ -29,6 +29,11 @@ const actions = {
         let newState = cloneDeep(state)
         newState.applicationData.loginOk = true
         return newState
+    },
+    CHARACTERS_FETCH_READY(state, action) {
+        let newState = cloneDeep(state)
+        newState.applicationData.characters = action.payload
+        return newState
     }
 }
 

@@ -20,16 +20,19 @@ class CharacterList extends Component {
     static mapStateToProps = state => {
         let chars = state.applicationData.characters
         return {
-            dataLoaded: true/* Array.isArray(chars) && chars.length > 0 */
+            dataLoaded:  Array.isArray(chars) && chars.length > 0,
+            characters: chars
         }
     }
-    static mapDispatchToProps = () => ({})
     static navigationOptions = {
         title: "Choose your hero!",
         headerLeft: null
     }
     componentDidMount() {
         dispatch(loadCharactersList)
+    }
+    chooseCharacter = (char) => () => {
+        console.log('пыщь!', char);
     }
     //hide keyboard
     render() {
@@ -40,20 +43,11 @@ class CharacterList extends Component {
             </View>
         const CharList = () =>
             <FlatList
-                data={[
-                    { title: "Character Long Name", image: "avatar.png" },
-                    { title: "Character Long Name", image: "avatar.png" },
-                    { title: "Character Long Name", image: "avatar.png" },
-                    { title: "Character Long Name", image: "avatar.png" },
-                    { title: "Character Long Name", image: "avatar.png" },
-                    { title: "Character Long Name", image: "avatar.png" },
-                    { title: "Character Long Name", image: "avatar.png" },
-                    { title: "Character Long Name", image: "avatar.png" },
-                    { title: "Character Long Name", image: "avatar.png" },
-                    { title: "Character Long Name", image: "avatar.png" },
-                    { title: "ddd", image: "dsdd" }
-                ]}
-                renderItem={({ item }) => <CharListItem />}
+                data={this.props.characters.map(c => {
+                    c.onTap = this.chooseCharacter(c)
+                    return c
+                })}
+                renderItem={({ item }) => <CharListItem {...item} />}
                 keyExtractor={(item, index) => index}
             />
         return (
@@ -65,4 +59,4 @@ class CharacterList extends Component {
     }
 }
 
-export default connect(CharacterList.mapStateToProps, CharacterList.mapDispatchToProps)(CharacterList)
+export default connect(CharacterList.mapStateToProps)(CharacterList)
