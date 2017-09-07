@@ -7,6 +7,8 @@ export default {
         accent: "#FF5252",
         primaryText: "#212121",
         secondaryText: "#757575",
-        divider: "#BDBDBD"
+        divider: "#BDBDBD",
+        background: "#E9E9EF",
+        backgroundWhite: '#fafafa'
     }
 }

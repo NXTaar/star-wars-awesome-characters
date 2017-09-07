@@ -26,13 +26,14 @@ class CharacterList extends Component {
     }
     static navigationOptions = {
         title: "Choose your hero!",
-        headerLeft: null
+        headerLeft: null,
+        headerMode: 'screen'
     }
     componentDidMount() {
         dispatch(loadCharactersList)
     }
     chooseCharacter = (char) => () => {
-        console.log('пыщь!', char);
+        this.props.navigation.navigate('CharDetails', char)
     }
     //hide keyboard
     render() {

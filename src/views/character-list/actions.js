@@ -6,18 +6,14 @@ export const loadCharactersList = async (dispatch) => {
     })
     let charactersInfo = (await Promise.all(characterRequest)).map(c => JSON.parse(c._bodyInit))
     let payload = _.zipWith(allowedCharacters, charactersInfo, (configInfo, serverInfo) => {
-        let {name, gender, homeworld, birth_year} = serverInfo
-        let {qoute, color, requestId, listAvatar, cardAvatar} = CONFIG.characters[configInfo]
+        let {name, gender, homeworld, birth_year, height} = serverInfo
         return {
             name,
             gender,
             birth_year,
-            qoute,
-            color,
-            listAvatar,
-            cardAvatar,
-            id: requestId,
-            homeworld
+            height,
+            homeworld,
+            ...configInfo
         }
     })
     dispatch({

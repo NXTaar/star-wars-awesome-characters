@@ -18,6 +18,7 @@
         "vader": {
             "qoute": "\"I find your lack of faith disturbing\"",
             "color": "#E12F3A",
+            "titleColor": true,
             "requestId": 4,
             "listAvatar": "vader",
             "cardAvatar": "vader-card"

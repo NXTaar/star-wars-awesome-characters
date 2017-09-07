@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 
 import LoginView from './src/views/login'
 import CharacterList from './src/views/character-list'
+import CharacterDetails from './src/views/character-details'
 
 const { AppRegistry, Text } = Native
 
@@ -12,7 +13,8 @@ import { StackNavigator } from 'react-navigation';
 
 const AppNavigator = StackNavigator({
   Login:    {screen: LoginView},
-  CharList: {screen: CharacterList}
+  CharList: {screen: CharacterList},
+  CharDetails: {screen: CharacterDetails}
 }, {
   initialRouteName: 'CharList',
 })

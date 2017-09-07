@@ -3,6 +3,8 @@ export default {
         "login-background": require('../assets/login-background.png'),
         "test": require('../assets/test.png'),
         "obi-wan": require('../assets/obi-wan.png'),
-        "vader": require('../assets/vader.png')
+        "obi-wan-card": require('../assets/obi-wan-card.jpg'),
+        "vader": require('../assets/vader.png'),
+        "vader-card": require('../assets/vader-card.jpg')
     }
 }
