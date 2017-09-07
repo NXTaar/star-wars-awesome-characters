@@ -1,7 +1,9 @@
 const { Text, View, Image, ScrollView } = Native
 
+
 import styles, { bgColor } from './styles'
 import InfoList from 'components/info-list'
+import ActionsPanel from 'components/actions-panel'
 
 const charColor = comp => {
     const color = _.get(comp, 'props.navigation.state.params.color', COLORS.theme.background)
@@ -37,6 +39,7 @@ class CharacterDetails extends Component {
     render() {
         let characterInfo = this.props.navigation.state.params
         let {name, gender, height, color, cardAvatar, titleColor} = characterInfo
+        let actionsConfig = {color}
         return (
             <View style={[styles.container/*, charColor(this)*/]}>
                 <View style={[styles.imageContainer, charColor(this)]}>
@@ -44,6 +47,7 @@ class CharacterDetails extends Component {
                     <Text style={[styles.characterName]}>{name}</Text>
                 </View>
                 <InfoList style={{marginTop: 8}} list={makeInfoList(characterInfo)}/>
+                <ActionsPanel {...actionsConfig}/>
             </View>
         )
     }

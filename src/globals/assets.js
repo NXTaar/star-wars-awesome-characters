@@ -5,6 +5,7 @@ export default {
         "obi-wan": require('../assets/obi-wan.png'),
         "obi-wan-card": require('../assets/obi-wan-card.jpg'),
         "vader": require('../assets/vader.png'),
-        "vader-card": require('../assets/vader-card.jpg')
+        "vader-card": require('../assets/vader-card.jpg'),
+        "lightsaber": require('../assets/lightsaber.png')
     }
 }

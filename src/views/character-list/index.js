@@ -30,7 +30,9 @@ class CharacterList extends Component {
         headerMode: 'screen'
     }
     componentDidMount() {
-        dispatch(loadCharactersList)
+        dispatch(loadCharactersList).then(p => {
+            console.log('ddddddd');
+        })
     }
     chooseCharacter = (char) => () => {
         this.props.navigation.navigate('CharDetails', char)
@@ -48,7 +50,7 @@ class CharacterList extends Component {
                     c.onTap = this.chooseCharacter(c)
                     return c
                 })}
-                renderItem={({ item }) => <CharListItem {...item} />}
+                renderItem={ ({ item }) => <CharListItem {...item} /> }
                 keyExtractor={(item, index) => index}
             />
         return (

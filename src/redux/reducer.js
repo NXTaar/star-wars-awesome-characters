@@ -8,7 +8,8 @@ const intialState = {
     },
     applicationData: {
         loginOk: false,
-        characters: null
+        characters: null,
+        lightsaber: false
     }
 }
 
